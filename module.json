@@ -1,0 +1,19 @@
+{
+  "id": "pf2e-stress",
+  "title": "Pathfinder 2e stress variant rule",
+  "version": "0.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "description": "Stress can be used in campaigns where PCs face being ground down by factors over long periods of time. \n\nThe stress track replaces hero points.\n\nEach character has a stress track with ten boxes. When they perform an action that requires them to take stress, a box is ticked."
+}
