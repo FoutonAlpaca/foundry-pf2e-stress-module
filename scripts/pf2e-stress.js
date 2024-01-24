@@ -18,15 +18,11 @@ Hooks.on('renderCharacterSheetPF2e', (sheet, html) => {
 function addStressValueToCharacterSheet(html) {
   const heroPointContainer = html.find('section > form > header > section.char-details');
 
-  console.log('found' + heroPointContainer);
-
-  // todo localize
   const stress = `
 <div class="dots">
-  <span class="label">Stress</span>
+  <span class="label">${(game.i18n.localize(`${MODULE_ID}.terms.stress`))}</span>
   <span>5</span>
-</div>
-  `
+</div>`
 
   heroPointContainer.append(stress);
 };

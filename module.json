@@ -18,5 +18,12 @@
   "description": "Stress can be used in campaigns where PCs face being ground down by factors over long periods of time. \n\nThe stress track replaces hero points.\n\nEach character has a stress track with ten boxes. When they perform an action that requires them to take stress, a box is ticked.",
   "esmodules": [
     "scripts/pf2e-stress.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
   ]
 }
