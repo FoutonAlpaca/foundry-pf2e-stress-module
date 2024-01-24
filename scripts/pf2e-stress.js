@@ -1,9 +1,10 @@
-const MODULE_ID = 'pf2e-stress';
+import { StressResourceData } from './stress-resource-data.js';
+import { module } from './module.js';
 
 Hooks.once('init', () => {
   CONFIG.debug.hooks = true;
 
-  console.log(`${MODULE_ID} initalised`);
+  console.log(`${module.MODULE_ID} initalised`);
 });
 
 Hooks.on('renderCharacterSheetPF2e', (sheet, html) => {
@@ -11,7 +12,7 @@ Hooks.on('renderCharacterSheetPF2e', (sheet, html) => {
     return;
   }
 
-  addStressValueToCharacterSheet(html);
+  addStressValueToCharacterSheet(sheet.object, html);
 });
 
 Hooks.on('renderPartySheetPF2e', (_, html) => {
@@ -19,28 +20,48 @@ Hooks.on('renderPartySheetPF2e', (_, html) => {
 });
 
 
-function addStressValueToCharacterSheet(html) {
-  const heroPointContainer = html.find('section > form > header > section.char-details');
+function addStressValueToCharacterSheet(actor, html) {
+  const actorId = actor.id;
+
+  const heroPointContainer = html.find('section.char-details');
   heroPointContainer.find('div.dots').remove();
+
+  const stressData = StressResourceData.getStressDataForActor(actorId);
+  const stressValue = stressData?.stress ?? 0;
 
   const stress = `
 <div>
-  <span class="label">${(game.i18n.localize(`${MODULE_ID}.terms.stress`))}</span>
-  <span>5</span>
+  <span class="label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
+  <input class="input" value="${stressValue}">
 </div>`
 
   heroPointContainer.append(stress);
+  heroPointContainer.find('div > input').on('blur', function() {
+    const value = $(this).val();
+    if (value !== '') {
+      const parsed = parseInt(value)
+      StressResourceData.setStressDataForActor(actorId, parsed);
+    }
+  });
 };
 
 function addStressValueToPartySheet(html) {
-  const memberHeaderContainer = html.find('section > form > section > div[data-tab="overview"] > div > section.member > div.data > header');
-  memberHeaderContainer.find('a.hero-points').remove();
+  const memberHeaderContainer = html.find('section.member');
 
-  const stress = `
-<div>
-  <span class="label">${(game.i18n.localize(`${MODULE_ID}.terms.stress`))}</span>
-  <span>5</span>
-</div>`
+  for (const member of memberHeaderContainer) {
+    const actorWithId = member.attributes['data-actor-uuid']
+    const actorId = actorWithId.value.split('.')[1];
+    const stressData = StressResourceData.getStressDataForActor(actorId);
+    const stressValue = stressData?.stress ?? 0;
 
-  memberHeaderContainer.append(stress);
+    const stressHtml = `
+    <div>
+      <span class="label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
+      <span>${stressValue}</span>
+    </div>`
+    const header = $(member).find('div.data > header');
+    header.find('a.hero-points').remove();
+    header.append(stressHtml);
+  }
 };
+
