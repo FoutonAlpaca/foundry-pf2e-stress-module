@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "eslint-plugin-html": "^7.1.0",
+    "standard": "^17.1.0"
+  }
+}
