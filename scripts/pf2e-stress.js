@@ -31,8 +31,8 @@ function addStressValueToCharacterSheet(actor, html) {
 
   const stress = `
 <div>
-  <span class="label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
-  <input class="input" value="${stressValue}">
+  <span class="pf2e-stress-label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
+  <input class="pf2e-stress" value="${stressValue}">
 </div>`
 
   heroPointContainer.append(stress);

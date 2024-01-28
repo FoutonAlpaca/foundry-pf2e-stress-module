@@ -25,5 +25,8 @@
       "name": "English",
       "path": "languages/en.json"
     }
+  ],
+  "styles": [
+    "styles/pf2e-stress.css"
   ]
 }

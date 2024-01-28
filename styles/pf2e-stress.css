@@ -1,0 +1,17 @@
+input.pf2e-stress {
+    background: var(--color-pf-primary);
+    border: 1px solid #956d58;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 4px rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    font-weight: 700;
+    font-family: var(--sans-serif);
+    font-size: var(--font-size-12);
+    text-align: center;
+    margin: 5px;
+    max-width: 50px;
+}
+
+.pf2e-stress-label {
+    padding: 1px 3px;
+}
