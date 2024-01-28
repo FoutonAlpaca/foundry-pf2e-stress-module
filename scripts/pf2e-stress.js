@@ -1,4 +1,4 @@
-import { StressResourceData } from './stress-resource-data.js'
+import { StressResourceData } from './actor-stress-resource-data.js'
 import { module } from './module.js'
 
 Hooks.once('init', () => {
@@ -25,12 +25,10 @@ function addStressValueToCharacterSheet (actor, html) {
   const heroPointContainer = html.find('section.char-details')
   heroPointContainer.find('div.dots').remove()
 
-  const stressData = StressResourceData.getStressDataForActor(actorId)
-  const stressValue = stressData?.stress ?? 0
-
+  const stressValue = StressResourceData.getStressValueForActorOrDefault(actorId)
   const stress = `
 <div>
-  <span class="pf2e-stress-label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
+  <span class="pf2e-stress-label">${module.localize('terms.stress')}</span>
   <input class="pf2e-stress" value="${stressValue}">
 </div>`
 
@@ -39,10 +37,12 @@ function addStressValueToCharacterSheet (actor, html) {
     const value = $(this).val()
     if (value !== '') {
       const parsed = parseInt(value)
-      StressResourceData.setStressDataForActor(actorId, parsed)
+      if (!isNaN(parsed)) {
+        StressResourceData.setStressValueForActor(actorId, parsed)
+      }
     }
   })
-};
+}
 
 function addStressValueToPartySheet (html) {
   const memberHeaderContainer = html.find('section.member')
@@ -50,16 +50,15 @@ function addStressValueToPartySheet (html) {
   for (const member of memberHeaderContainer) {
     const actorWithId = member.attributes['data-actor-uuid']
     const actorId = actorWithId.value.split('.')[1]
-    const stressData = StressResourceData.getStressDataForActor(actorId)
-    const stressValue = stressData?.stress ?? 0
+    const stressValue = StressResourceData.getStressValueForActorOrDefault(actorId)
 
     const stressHtml = `
     <div>
-      <span class="label">${(game.i18n.localize(`${module.MODULE_ID}.terms.stress`))}</span>
+      <span class="label">${module.localize('terms.stress')}</span>
       <span>${stressValue}</span>
     </div>`
     const header = $(member).find('div.data > header')
     header.find('a.hero-points').remove()
     header.append(stressHtml)
   }
-};
+}

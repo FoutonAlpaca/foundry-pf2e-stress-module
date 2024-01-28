@@ -4,4 +4,12 @@ export class module {
   static FLAGS = {
     StressData: 'stressData'
   }
+
+  static localize (term) {
+    return game.i18n.localize(`${module.MODULE_ID}.${term}`)
+  }
+
+  static getActorById (actorId) {
+    return game.actors.get(actorId)
+  }
 }
