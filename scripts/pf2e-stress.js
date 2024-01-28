@@ -26,20 +26,19 @@ function addStressValueToCharacterSheet (actor, html) {
   heroPointContainer.find('div.dots').remove()
 
   const stressValue = StressResourceData.getStressValueForActorOrDefault(actorId)
+  const inputId = `pf2e-stress-input-${actor.id}`
   const stress = `
 <div>
-  <span class="pf2e-stress-label">${module.localize('terms.stress')}</span>
-  <input class="pf2e-stress" value="${stressValue}">
+  <label class="pf2e-stress-label">${module.localize('terms.stress')}
+    <input id="${inputId}" type="number" class="pf2e-stress" value="${stressValue}" step="1" min="0" max="10">
+  </label>
 </div>`
 
   heroPointContainer.append(stress)
-  heroPointContainer.find('div > input').on('blur', function () {
+  heroPointContainer.find(`#${inputId}`).on('blur', function () {
     const value = $(this).val()
     if (value !== '') {
-      const parsed = parseInt(value)
-      if (!isNaN(parsed)) {
-        StressResourceData.setStressValueForActor(actorId, parsed)
-      }
+      StressResourceData.setStressValueForActor(actorId, value)
     }
   })
 }
@@ -54,8 +53,9 @@ function addStressValueToPartySheet (html) {
 
     const stressHtml = `
     <div>
-      <span class="label">${module.localize('terms.stress')}</span>
-      <span>${stressValue}</span>
+      <label>${module.localize('terms.stress')}
+        <span>${stressValue}</span>
+      </label>
     </div>`
     const header = $(member).find('div.data > header')
     header.find('a.hero-points').remove()
