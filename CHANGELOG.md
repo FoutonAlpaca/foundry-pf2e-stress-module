@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2024-01-28
+
+### Fixed
+- Fix changelog GitHub references
+- Added missing download link in module.json
+
 ### Fixed
 - Fix changelog GitHub references
 
@@ -16,5 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Created module with ability to set stress value on a character sheet and show the current value on the party sheet
 
-[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/0.1.1
 [0.1.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/0.1.0
