@@ -2,8 +2,6 @@ import { StressResourceData } from './actor-stress-resource-data.js'
 import { module } from './module.js'
 
 Hooks.once('init', () => {
-  CONFIG.debug.hooks = true
-
   console.log(`${module.MODULE_ID} initalised`)
 })
 

@@ -1,14 +1,14 @@
 {
   "id": "pf2e-stress",
   "title": "Pathfinder 2e stress variant rule",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
   },
   "url": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module",
-  "manifest": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/0.1.1/module.json",
-  "download": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/0.1.1/module.zip",
+  "manifest": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/0.1.2/module.json",
+  "download": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/0.1.2/module.zip",
   "readme": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/README.md",
   "changelog": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/CHANGELOG.md",
   "license": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/LICENSE.txt",
