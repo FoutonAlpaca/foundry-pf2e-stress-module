@@ -1,6 +1,11 @@
 {
   "pf2e-stress": {
+    "errors": {
+      "libWrapperRequired": "Module 'pf2e-stress' requires the 'libWrapper' module. Please install and activate it."
+    },
     "terms": {
+      "reroll-using-stress": "Reroll using a point of stress",
+      "rerolled-using-stress": "Rerolled using a point of stress",
       "stress": "Stress"
     }
   }

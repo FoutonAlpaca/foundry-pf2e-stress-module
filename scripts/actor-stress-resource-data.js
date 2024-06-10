@@ -7,7 +7,17 @@ export class StressResourceData {
   }
 
   static getStressValueForActorOrDefault (actorId) {
-    return this.getStressDataForActor(actorId)?.stress ?? 0
+    return this.getStressDataForActor(actorId)?.stress ?? module.MIN_STRESS
+  }
+
+  static canActorTakeOnMoreStress (actorId) {
+    return this.getStressValueForActorOrDefault(actorId) < module.MAX_STRESS
+  }
+
+  static addStressToActor (actorId) {
+    const currentStress = this.getStressValueForActorOrDefault(actorId)
+    const newStress = currentStress + 1
+    return this.setStressValueForActor(actorId, newStress)
   }
 
   static setStressValueForActor (actorId, stressValue) {
@@ -15,7 +25,7 @@ export class StressResourceData {
     if (isNaN(value)) {
       return
     }
-    if (value < 0 || value > 10) {
+    if (value < module.MIN_STRESS || value > module.MAX_STRESS) {
       return
     }
 
