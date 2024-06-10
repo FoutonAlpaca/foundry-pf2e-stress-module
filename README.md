@@ -7,6 +7,7 @@ When a character reaches 10 stress they take a Trauma which is a negative condit
 ## Features
 - Replaces Hero Point pips on the Character Sheet with a Stress value
 - Current Stress value of all characters can be seen on the Party sheet
+- Context menu to reroll using a point of stress
 
 ## limitations
 - No automation for increasing the stress value based on events such as a character being reduced to 0 hit points.

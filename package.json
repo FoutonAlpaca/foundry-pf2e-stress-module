@@ -4,6 +4,6 @@
     "standard": "^17.1.0"
   },
   "standard": {
-    "globals": [ "game", "Hooks", "CONFIG", "$" ]
+    "globals": [ "game", "Hooks", "CONFIG", "$", "libWrapper", "ui" ]
   }
 }
