@@ -38,6 +38,10 @@ Hooks.on('renderChatMessage', (message, html) => {
   addStressContextToMessage(message, html)
 })
 
+Hooks.on('updateActor', async (actor, data, diff) => {
+  await addStressIfDying(actor, data, diff)
+})
+
 const addRerollWithStressContextOption = (wrapped) => {
   const buttons = wrapped.bind(this)()
 
@@ -122,4 +126,22 @@ function addStressContextToMessage (message, html) {
     const stressIconHtml = `<i class="${module.STRESS_ICON} reroll-indicator" data-tooltip="${module.localize('terms.rerolled-using-stress')}"></i>`
     $(flavorText).find('i.reroll-indicator').replaceWith(stressIconHtml)
   }
+}
+
+async function addStressIfDying (actor, data, diff) {
+  if (!game.user.isGM || !actor?.isOfType('character')) {
+    return
+  }
+
+  if (diff?.damageTaken === undefined || diff.damageTaken <= 0) {
+    return
+  }
+
+  if (data?.system?.attributes?.hp?.value === 0 && !actorHasCondition(actor, 'dying')) {
+    await StressResourceData.addStressToActor(actor.id)
+  }
+}
+
+function actorHasCondition (actor, condition) {
+  return actor.itemTypes?.condition?.find(c => c.type === 'condition' && condition === c.slug)
 }
