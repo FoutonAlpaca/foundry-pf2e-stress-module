@@ -5,7 +5,18 @@ export class module {
   static STRESS_ICON = 'fa-solid fa-brain'
 
   static FLAGS = {
+    Pf2e: 'pf2e',
     StressData: 'stressData'
+  }
+
+  static ACTOR_TYPES = {
+    Character: 'character',
+    Familiar: 'familiar'
+  }
+
+  static CONDITIONS = {
+    Condition: 'condition',
+    Dying: 'dying'
   }
 
   static localize (term) {
