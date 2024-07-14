@@ -10,7 +10,7 @@ export class StressDataFlagApi {
   }
 
   static getWorkaroundPf2eFlag (document) {
-    return document?.getFlag('pf2e', module.MODULE_ID)?.isRerollFromStress ?? false
+    return document?.getFlag(module.FLAGS.Pf2e, module.MODULE_ID)?.isRerollFromStress ?? false
   }
 
   static setWorkaroundPf2eFlag (document) {
@@ -22,6 +22,6 @@ export class StressDataFlagApi {
       isRerollFromStress: true
     }
 
-    return document?.setFlag('pf2e', module.MODULE_ID, flagData)
+    return document?.setFlag(module.FLAGS.Pf2e, module.MODULE_ID, flagData)
   }
 }

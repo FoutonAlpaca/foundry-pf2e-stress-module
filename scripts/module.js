@@ -5,11 +5,46 @@ export class module {
   static STRESS_ICON = 'fa-solid fa-brain'
 
   static FLAGS = {
+    Pf2e: 'pf2e',
     StressData: 'stressData'
   }
 
-  static localize (term) {
-    return game.i18n.localize(`${module.MODULE_ID}.${term}`)
+  static ACTOR_TYPES = {
+    Character: 'character',
+    Familiar: 'familiar'
+  }
+
+  static CONDITIONS = {
+    Condition: 'condition',
+    Dying: 'dying'
+  }
+
+  static STRESS_VALUE_CHANGE_SOURCE = {
+    CharacterSheet: 'characterSheet',
+    Reroll: 'reroll',
+    Dying: 'dying',
+    Undo: 'undo',
+    Unspecified: 'unspecified'
+  }
+
+  static getStressMessageLocalizationKey (changeType) {
+    const defaultMessageKey = 'character-sheet'
+
+    if (changeType === undefined || changeType === this.STRESS_VALUE_CHANGE_SOURCE.Unspecified) {
+      return `messages.${defaultMessageKey}`
+    }
+
+    return `messages.${changeType.slugify({ lowercase: true })}`
+  }
+
+  static localize (term, data = undefined) {
+    const key = `${module.MODULE_ID}.${term}`
+
+    if (data !== undefined) {
+      return game.i18n.format(key, data)
+    }
+
+    return game.i18n.localize(key)
   }
 
   static getActorById (actorId) {

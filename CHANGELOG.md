@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-07-12
+
+### Added
+- Send chat message when stress value is changed
+
 ## [1.1.0] - 2024-07-12
 
 ### Added
@@ -39,7 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Created module with ability to set stress value on a character sheet and show the current value on the party sheet
 
-[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.1.0
 [1.1.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.1.0
 [1.0.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.0.0
 [0.1.2]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/0.1.2

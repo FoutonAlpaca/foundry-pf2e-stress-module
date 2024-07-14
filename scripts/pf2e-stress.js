@@ -23,7 +23,7 @@ Hooks.once('ready', () => {
 })
 
 Hooks.on('renderCharacterSheetPF2e', (sheet, html) => {
-  if (sheet.object.type !== 'character') {
+  if (sheet.object.type !== module.ACTOR_TYPES.Character) {
     return
   }
 
@@ -47,8 +47,8 @@ const addRerollWithStressContextOption = (wrapped) => {
 
   const canStressReroll = (li) => {
     const message = game.messages.get(li[0].dataset.messageId, { strict: true })
-    const actor = message.actor?.isOfType('familiar') ? message.actor.master : message.actor
-    return message.isRerollable && !!actor?.isOfType('character') && StressResourceData.canActorTakeOnMoreStress(actor.id)
+    const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
+    return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character) && StressResourceData.canActorTakeOnMoreStress(actor.id)
   }
 
   buttons.push(
@@ -58,11 +58,11 @@ const addRerollWithStressContextOption = (wrapped) => {
       condition: canStressReroll,
       callback: async li => {
         let message = game.messages.get(li[0].dataset.messageId, { strict: true })
-        const actor = message.actor?.isOfType('familiar') ? message.actor.master : message.actor
+        const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
         message = await StressDataFlagApi.setWorkaroundPf2eFlag(message)
 
         game.pf2e.Check.rerollFromMessage(message)
-        await StressResourceData.addStressToActor(actor.id)
+        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id)
       }
     }
   )
@@ -89,7 +89,7 @@ function addStressValueToCharacterSheet (actor, html) {
   heroPointContainer.find(`#${inputId}`).on('blur', async function () {
     const value = $(this).val()
     if (value !== '') {
-      await StressResourceData.setStressValueForActor(actorId, value)
+      await StressResourceData.setStressValueForActor(module.STRESS_VALUE_CHANGE_SOURCE.CharacterSheet, actorId, value)
     }
   })
 }
@@ -129,7 +129,7 @@ function addStressContextToMessage (message, html) {
 }
 
 async function addStressIfDying (actor, data, diff) {
-  if (!game.user.isGM || !actor?.isOfType('character')) {
+  if (!game.user.isGM || !actor?.isOfType(module.ACTOR_TYPES.Character)) {
     return
   }
 
@@ -137,11 +137,11 @@ async function addStressIfDying (actor, data, diff) {
     return
   }
 
-  if (data?.system?.attributes?.hp?.value === 0 && !actorHasCondition(actor, 'dying')) {
-    await StressResourceData.addStressToActor(actor.id)
+  if (data?.system?.attributes?.hp?.value === 0 && !actorHasCondition(actor, module.CONDITIONS.Dying)) {
+    await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Dying, actor.id)
   }
 }
 
 function actorHasCondition (actor, condition) {
-  return actor.itemTypes?.condition?.find(c => c.type === 'condition' && condition === c.slug)
+  return actor.itemTypes?.condition?.find(c => c.type === module.CONDITIONS.Condition && condition === c.slug)
 }
