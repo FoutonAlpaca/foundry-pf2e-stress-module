@@ -62,7 +62,7 @@ const addRerollWithStressContextOption = (wrapped) => {
         message = await StressDataFlagApi.setWorkaroundPf2eFlag(message)
 
         game.pf2e.Check.rerollFromMessage(message)
-        await StressResourceData.addStressToActor(actor.id)
+        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id)
       }
     }
   )
@@ -89,7 +89,7 @@ function addStressValueToCharacterSheet (actor, html) {
   heroPointContainer.find(`#${inputId}`).on('blur', async function () {
     const value = $(this).val()
     if (value !== '') {
-      await StressResourceData.setStressValueForActor(actorId, value)
+      await StressResourceData.setStressValueForActor(module.STRESS_VALUE_CHANGE_SOURCE.CharacterSheet, actorId, value)
     }
   })
 }
@@ -138,7 +138,7 @@ async function addStressIfDying (actor, data, diff) {
   }
 
   if (data?.system?.attributes?.hp?.value === 0 && !actorHasCondition(actor, module.CONDITIONS.Dying)) {
-    await StressResourceData.addStressToActor(actor.id)
+    await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Dying, actor.id)
   }
 }
 

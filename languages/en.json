@@ -7,6 +7,11 @@
       "reroll-using-stress": "Reroll using a point of stress",
       "rerolled-using-stress": "Rerolled using a point of stress",
       "stress": "Stress"
+    },
+    "messages": {
+      "character-sheet": "{actor}'s stress is now {stressValue}",
+      "dying": "{actor}'s stress is now {stressValue} after being reduced to zero HP",
+      "reroll": "{actor}'s stress is now {stressValue} after the reroll"
     }
   }
 }
