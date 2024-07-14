@@ -11,5 +11,5 @@ When a character reaches 10 stress they take a Trauma which is a negative condit
 - Stress is added when a character is reduced to 0 HP
 
 ## limitations
-- No automation for increasing the stress value based on events such as a character being reduced to 0 hit points.
+- No undo for stress value changes
 - No mechanism to apply Trauma conditions
