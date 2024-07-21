@@ -27,9 +27,9 @@ export class StressResourceData {
     return this.getStressValueForActorOrDefault(actorId) < module.MAX_STRESS
   }
 
-  static addStressToActor (changeType, actorId) {
+  static addStressToActor (changeType, actorId, amount = 1) {
     const currentStress = this.getStressValueForActorOrDefault(actorId)
-    const newStress = currentStress + 1
+    const newStress = currentStress + amount
     return this.setStressValueForActor(changeType, actorId, newStress)
   }
 
@@ -44,11 +44,11 @@ export class StressResourceData {
     const actor = module.getActorById(actorId)
     const currentStress = this.getStressValueForActorOrDefault(actorId)
 
-    if (currentStress === stressValue) {
+    if (currentStress === value) {
       return
     }
 
-    this.sendStressChangeChatMessage(changeType, actor.name, stressValue)
+    this.sendStressChangeChatMessage(changeType, actor.name, value)
 
     const stressData = {
       actorId,

@@ -9,7 +9,7 @@
       "stress": "Stress"
     },
     "messages": {
-      "character-sheet": "{actor}'s stress is now {stressValue}",
+      "charactersheet": "{actor}'s stress is now {stressValue}",
       "dying": "{actor}'s stress is now {stressValue} after being reduced to zero HP",
       "reroll": "{actor}'s stress is now {stressValue} after the reroll"
     }
