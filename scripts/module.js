@@ -16,7 +16,8 @@ export class module {
 
   static CONDITIONS = {
     Condition: 'condition',
-    Dying: 'dying'
+    Dying: 'dying',
+    Wounded: 'wounded'
   }
 
   static STRESS_VALUE_CHANGE_SOURCE = {

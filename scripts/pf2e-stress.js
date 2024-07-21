@@ -137,11 +137,9 @@ async function addStressIfDying (actor, data, diff) {
     return
   }
 
-  if (data?.system?.attributes?.hp?.value === 0 && !actorHasCondition(actor, module.CONDITIONS.Dying)) {
-    await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Dying, actor.id)
+  if (data?.system?.attributes?.hp?.value === 0 && actor.getCondition(module.CONDITIONS.Dying) === null) {
+    const woundedValue = actor.getCondition(module.CONDITIONS.Wounded)?.value ?? 0
+    const stressTotal = woundedValue + 1
+    await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Dying, actor.id, stressTotal)
   }
-}
-
-function actorHasCondition (actor, condition) {
-  return actor.itemTypes?.condition?.find(c => c.type === module.CONDITIONS.Condition && condition === c.slug)
 }
