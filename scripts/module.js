@@ -28,7 +28,7 @@ export class module {
   }
 
   static getStressMessageLocalizationKey (changeType) {
-    const defaultMessageKey = 'character-sheet'
+    const defaultMessageKey = 'charactersheet'
 
     if (changeType === undefined || changeType === this.STRESS_VALUE_CHANGE_SOURCE.Unspecified) {
       return `messages.${defaultMessageKey}`
