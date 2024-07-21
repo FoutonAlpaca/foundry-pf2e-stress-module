@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2024-07-21
+
+### Added
+- When reduced to zero hp, new formula is 1 + the current wounded value (if any)
+
+### Fixed
+- Correctly format the message when changing stress from the character sheet
+
 ## [1.2.0] - 2024-07-12
 
 ### Added
@@ -44,8 +52,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Created module with ability to set stress value on a character sheet and show the current value on the party sheet
 
-[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.2.0...HEAD
-[1.2.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.1.0
+[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.3.0
+[1.2.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.2.0
 [1.1.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.1.0
 [1.0.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.0.0
 [0.1.2]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/0.1.2
