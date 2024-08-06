@@ -120,7 +120,7 @@ function addStressContextToMessage (message, html) {
     return
   }
 
-  const flavorTextHeader = html.find('header > span.flavor-text')
+  const flavorTextHeader = html.find('span.flavor-text')
 
   for (const flavorText of flavorTextHeader) {
     const stressIconHtml = `<i class="${module.STRESS_ICON} reroll-indicator" data-tooltip="${module.localize('terms.rerolled-using-stress')}"></i>`
