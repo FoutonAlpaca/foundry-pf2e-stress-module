@@ -9,9 +9,9 @@
       "stress": "Stress"
     },
     "messages": {
-      "charactersheet": "{actor}'s stress is now {stressValue}",
-      "dying": "{actor}'s stress is now {stressValue} after being reduced to zero HP",
-      "reroll": "{actor}'s stress is now {stressValue} after the reroll"
+      "charactersheet": "{actor}'s stress changed from {oldValue} to {stressValue}",
+      "dying": "{actor}'s stress changed from {oldValue} to {stressValue} after being reduced to zero HP",
+      "reroll": "{actor}'s stress changed from {oldValue} to {stressValue} after the reroll"
     },
     "settings": {
       "stress-reroll-cost": {

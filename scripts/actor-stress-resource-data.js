@@ -2,10 +2,11 @@ import { module } from './module.js'
 import { StressDataFlagApi } from './stress-data-flag-api.js'
 
 export class StressResourceData {
-  static sendStressChangeChatMessage (changeType, actorName, stressValue) {
+  static sendStressChangeChatMessage (changeType, actorName, oldValue, stressValue) {
     const localizationKey = module.getStressMessageLocalizationKey(changeType)
     const localizationData = {
       actor: actorName,
+      oldValue,
       stressValue
     }
 
@@ -44,7 +45,7 @@ export class StressResourceData {
       return
     }
 
-    this.sendStressChangeChatMessage(changeType, actor.name, value)
+    this.sendStressChangeChatMessage(changeType, actor.name, currentStress, value)
 
     const stressData = {
       actorId,
