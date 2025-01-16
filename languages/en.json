@@ -4,14 +4,50 @@
       "libWrapperRequired": "Module 'pf2e-stress' requires the 'libWrapper' module. Please install and activate it."
     },
     "terms": {
-      "reroll-using-stress": "Reroll using a point of stress",
-      "rerolled-using-stress": "Rerolled using a point of stress",
+      "reroll-using-stress": "Reroll using stress",
+      "rerolled-using-stress": "Rerolled using stress",
       "stress": "Stress"
     },
     "messages": {
       "charactersheet": "{actor}'s stress is now {stressValue}",
       "dying": "{actor}'s stress is now {stressValue} after being reduced to zero HP",
       "reroll": "{actor}'s stress is now {stressValue} after the reroll"
+    },
+    "settings": {
+      "stress-reroll-cost": {
+        "attack-roll": {
+          "name": "Attack Roll",
+          "hint": "Stress cost to reroll an attack roll"
+        },
+        "check": {
+          "name": "Check",
+          "hint": "Stress cost to reroll a check"
+        },
+        "counteract-check": {
+          "name": "Counteract Check",
+          "hint": "Stress cost to reroll a counteract check"
+        },
+        "flat-check": {
+          "name": "Flat Check",
+          "hint": "Stress cost to reroll a flat check"
+        },
+        "initiative": {
+          "name": "Initiative",
+          "hint": "Stress cost to reroll an initiative roll"
+        },
+        "perception-check": {
+          "name": "Perception Check",
+          "hint": "Stress cost to reroll a perception check"
+        },
+        "saving-throw": {
+          "name": "Saving Throw",
+          "hint": "Stress cost to reroll a saving throw"
+        },
+        "skill-check": {
+          "name": "Skill Check",
+          "hint": "Stress cost to reroll a skill check"
+        }
+      }
     }
   }
 }

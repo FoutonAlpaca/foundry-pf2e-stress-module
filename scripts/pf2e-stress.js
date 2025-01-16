@@ -11,8 +11,9 @@ Hooks.once('init', () => {
       addRerollWithStressContextOption,
       libWrapper.WRAPPER
     )
+    module.registerRerollCostConfigurationSettings()
 
-    console.log(`${module.MODULE_ID} initalised`)
+    console.log(`${module.MODULE_ID} initialised`)
   }
 })
 
@@ -62,7 +63,8 @@ const addRerollWithStressContextOption = (wrapped) => {
         message = await StressDataFlagApi.setWorkaroundPf2eFlag(message)
 
         game.pf2e.Check.rerollFromMessage(message)
-        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id)
+        const rerollCost = module.getRerollCostForRollCheckType(message.flags.pf2e.context.type)
+        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id, rerollCost)
       }
     }
   )

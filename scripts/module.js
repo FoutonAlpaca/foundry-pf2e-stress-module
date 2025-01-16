@@ -27,6 +27,17 @@ export class module {
     Unspecified: 'unspecified'
   }
 
+  static DICE_ROLL_CHECK_TYPE = {
+    AttackRoll: 'attack-roll',
+    Check: 'check',
+    CounteractCheck: 'counteract-check',
+    FlatCheck: 'flat-check',
+    Initiative: 'initiative',
+    PerceptionCheck: 'perception-check',
+    SavingThrow: 'saving-throw',
+    SkillCheck: 'skill-check'
+  }
+
   static getStressMessageLocalizationKey (changeType) {
     const defaultMessageKey = 'charactersheet'
 
@@ -49,5 +60,33 @@ export class module {
 
   static getActorById (actorId) {
     return game.actors.get(actorId)
+  }
+
+  static registerRerollCostConfigurationSettings () {
+    for (const rollCheckType of Object.values(module.DICE_ROLL_CHECK_TYPE)) {
+      const name = module.toRerollSettingKey(rollCheckType)
+      game.settings.register(module.MODULE_ID, name, {
+        name: module.localize(`settings.stress-reroll-cost.${rollCheckType}.name`),
+        hint: module.localize(`settings.stress-reroll-cost.${rollCheckType}.hint`),
+        scope: 'world',
+        config: true,
+        type: Number,
+        default: 1
+      })
+    }
+  }
+
+  static toRerollSettingKey (rollCheckType) {
+    return `reroll-cost-${rollCheckType}`
+  }
+
+  static getRerollCostForRollCheckType (rollCheckType) {
+    const rollCheckTypes = Object.values(module.DICE_ROLL_CHECK_TYPE)
+    if (!rollCheckTypes.includes(rollCheckType)) {
+      return 1
+    }
+
+    const name = module.toRerollSettingKey(rollCheckType)
+    return game.settings.get(module.MODULE_ID, name)
   }
 }
