@@ -23,10 +23,6 @@ export class StressResourceData {
     return this.getStressDataForActor(actorId)?.stress ?? module.MIN_STRESS
   }
 
-  static canActorTakeOnMoreStress (actorId) {
-    return this.getStressValueForActorOrDefault(actorId) < module.MAX_STRESS
-  }
-
   static addStressToActor (changeType, actorId, amount = 1) {
     const currentStress = this.getStressValueForActorOrDefault(actorId)
     const newStress = currentStress + amount
@@ -38,7 +34,7 @@ export class StressResourceData {
     if (isNaN(value)) {
       return
     }
-    if (value < module.MIN_STRESS || value > module.MAX_STRESS) {
+    if (value < module.MIN_STRESS) {
       return
     }
     const actor = module.getActorById(actorId)

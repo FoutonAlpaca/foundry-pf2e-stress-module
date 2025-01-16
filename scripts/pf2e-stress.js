@@ -48,7 +48,7 @@ const addRerollWithStressContextOption = (wrapped) => {
   const canStressReroll = (li) => {
     const message = game.messages.get(li[0].dataset.messageId, { strict: true })
     const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
-    return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character) && StressResourceData.canActorTakeOnMoreStress(actor.id)
+    return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character)
   }
 
   buttons.push(
