@@ -112,7 +112,7 @@ function addStressValueToPartySheet (html) {
       </label>
     </div>`
     const header = $(member).find('div.data > header')
-    header.find('a.hero-points').remove()
+    header.find('a[data-resource="hero-points"]').remove()
     header.append(stressHtml)
   }
 }
