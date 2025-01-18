@@ -49,5 +49,39 @@
   ],
   "styles": [
     "styles/pf2e-stress.css"
+  ],
+  "packs": [
+    {
+      "label": "Actions",
+      "type": "Item",
+      "name": "pf2e-stress-actions",
+      "path": "./packs/pf2e-stress-actions",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "label": "Rules",
+      "type": "JournalEntry",
+      "name": "pf2e-stress-rules",
+      "path": "./packs/pf2e-stress-rules",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "pf2e-stress",
+      "sorting": "m",
+      "packs": [
+        "pf2e-stress-actions",
+        "pf2e-stress-rules"
+      ]
+    }
   ]
 }
