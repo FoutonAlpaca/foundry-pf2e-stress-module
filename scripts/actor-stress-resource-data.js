@@ -2,10 +2,11 @@ import { module } from './module.js'
 import { StressDataFlagApi } from './stress-data-flag-api.js'
 
 export class StressResourceData {
-  static sendStressChangeChatMessage (changeType, actorName, stressValue) {
+  static sendStressChangeChatMessage (changeType, actorName, oldValue, stressValue) {
     const localizationKey = module.getStressMessageLocalizationKey(changeType)
     const localizationData = {
       actor: actorName,
+      oldValue,
       stressValue
     }
 
@@ -23,10 +24,6 @@ export class StressResourceData {
     return this.getStressDataForActor(actorId)?.stress ?? module.MIN_STRESS
   }
 
-  static canActorTakeOnMoreStress (actorId) {
-    return this.getStressValueForActorOrDefault(actorId) < module.MAX_STRESS
-  }
-
   static addStressToActor (changeType, actorId, amount = 1) {
     const currentStress = this.getStressValueForActorOrDefault(actorId)
     const newStress = currentStress + amount
@@ -38,7 +35,7 @@ export class StressResourceData {
     if (isNaN(value)) {
       return
     }
-    if (value < module.MIN_STRESS || value > module.MAX_STRESS) {
+    if (value < module.MIN_STRESS) {
       return
     }
     const actor = module.getActorById(actorId)
@@ -48,7 +45,7 @@ export class StressResourceData {
       return
     }
 
-    this.sendStressChangeChatMessage(changeType, actor.name, value)
+    this.sendStressChangeChatMessage(changeType, actor.name, currentStress, value)
 
     const stressData = {
       actorId,

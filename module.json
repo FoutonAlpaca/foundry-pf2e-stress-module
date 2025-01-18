@@ -1,14 +1,14 @@
 {
   "id": "pf2e-stress",
   "title": "Pathfinder 2e stress variant rule",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "compatibility": {
     "minimum": "11",
-    "verified": "12.329"
+    "verified": "12.331"
   },
   "url": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module",
   "manifest": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/latest/download/module.json",
-  "download": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/1.3.0/module.zip",
+  "download": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/download/1.4.0/module.zip",
   "readme": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/README.md",
   "changelog": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/CHANGELOG.md",
   "license": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/blob/main/LICENSE.txt",
@@ -20,7 +20,7 @@
         "type": "module",
         "compatibility": {
           "minimum": "1.12.13.1",
-          "verified": "1.12.14.0"
+          "verified": "1.13.2.0"
         }
       }
     ],
@@ -31,7 +31,7 @@
         "manifest": "https://github.com/foundryvtt/pf2e/releases/download/latest/system.json",
         "compatibility": {
           "minimum": "5.12.7",
-          "verified": "6.1.0"
+          "verified": "6.8.2"
         }
       }
     ]
@@ -49,5 +49,39 @@
   ],
   "styles": [
     "styles/pf2e-stress.css"
+  ],
+  "packs": [
+    {
+      "label": "Actions",
+      "type": "Item",
+      "name": "pf2e-stress-actions",
+      "path": "./packs/pf2e-stress-actions",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "label": "Rules",
+      "type": "JournalEntry",
+      "name": "pf2e-stress-rules",
+      "path": "./packs/pf2e-stress-rules",
+      "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "pf2e-stress",
+      "sorting": "m",
+      "packs": [
+        "pf2e-stress-actions",
+        "pf2e-stress-rules"
+      ]
+    }
   ]
 }

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-01-17
+
+### Added
+- Module settings to specify the cost to reroll each 'roll type' when doing a reroll
+- Chat message now shows the previous stress value and the new value to help track the amount changed by the settings
+- Compendium items for all actions, recovery options and trauma entries
+- Compendium journal entry for describing the system, actions, trauma and recovery rules.
+- Updated compatibility for Foundry V12.133 and pf2e v6.8.2
+
+### Fixed
+- Update CSS path to correctly replace hero points with stress in the party sheet
+- Updated npm packages to latest
+
 ## [1.3.0] - 2024-07-21
 
 ### Added
@@ -52,7 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Created module with ability to set stress value on a character sheet and show the current value on the party sheet
 
-[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.3.0...HEAD
+[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.4.0...HEAD
+[1.4.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.4.0
 [1.3.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.3.0
 [1.2.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.2.0
 [1.1.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.1.0

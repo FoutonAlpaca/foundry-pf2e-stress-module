@@ -11,8 +11,9 @@ Hooks.once('init', () => {
       addRerollWithStressContextOption,
       libWrapper.WRAPPER
     )
+    module.registerRerollCostConfigurationSettings()
 
-    console.log(`${module.MODULE_ID} initalised`)
+    console.log(`${module.MODULE_ID} initialised`)
   }
 })
 
@@ -48,7 +49,7 @@ const addRerollWithStressContextOption = (wrapped) => {
   const canStressReroll = (li) => {
     const message = game.messages.get(li[0].dataset.messageId, { strict: true })
     const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
-    return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character) && StressResourceData.canActorTakeOnMoreStress(actor.id)
+    return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character)
   }
 
   buttons.push(
@@ -62,7 +63,8 @@ const addRerollWithStressContextOption = (wrapped) => {
         message = await StressDataFlagApi.setWorkaroundPf2eFlag(message)
 
         game.pf2e.Check.rerollFromMessage(message)
-        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id)
+        const rerollCost = module.getRerollCostForRollCheckType(message.flags.pf2e.context.type)
+        await StressResourceData.addStressToActor(module.STRESS_VALUE_CHANGE_SOURCE.Reroll, actor.id, rerollCost)
       }
     }
   )
@@ -110,7 +112,7 @@ function addStressValueToPartySheet (html) {
       </label>
     </div>`
     const header = $(member).find('div.data > header')
-    header.find('a.hero-points').remove()
+    header.find('a[data-resource="hero-points"]').remove()
     header.append(stressHtml)
   }
 }
