@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "eslint-plugin-html": "^8.1.0",
-    "standard": "^17.1.0"
+    "eslint-plugin-html": "^8.1.4",
+    "standard": "^17.1.2"
   },
   "standard": {
     "globals": [ "game", "Hooks", "CONFIG", "$", "libWrapper", "ui", "ChatMessage" ]
