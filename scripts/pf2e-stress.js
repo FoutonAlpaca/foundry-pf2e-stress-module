@@ -35,7 +35,7 @@ Hooks.on('renderPartySheetPF2e', (_, html) => {
   addStressValueToPartySheet(html)
 })
 
-Hooks.on('renderChatMessage', (message, html) => {
+Hooks.on('renderChatMessageHTML', (message, html) => {
   addStressContextToMessage(message, html)
 })
 
@@ -47,7 +47,7 @@ const addRerollWithStressContextOption = (wrapped) => {
   const buttons = wrapped.bind(this)()
 
   const canStressReroll = (li) => {
-    const message = game.messages.get(li[0].dataset.messageId, { strict: true })
+    const message = game.messages.get(li.dataset.messageId, { strict: true })
     const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
     return message.isRerollable && !!actor?.isOfType(module.ACTOR_TYPES.Character)
   }
@@ -58,7 +58,7 @@ const addRerollWithStressContextOption = (wrapped) => {
       icon: `<i class="${module.STRESS_ICON}"></i>`,
       condition: canStressReroll,
       callback: async li => {
-        let message = game.messages.get(li[0].dataset.messageId, { strict: true })
+        let message = game.messages.get(li.dataset.messageId, { strict: true })
         const actor = message.actor?.isOfType(module.ACTOR_TYPES.Familiar) ? message.actor.master : message.actor
         message = await StressDataFlagApi.setWorkaroundPf2eFlag(message)
 
@@ -74,7 +74,7 @@ const addRerollWithStressContextOption = (wrapped) => {
 function addStressValueToCharacterSheet (actor, html) {
   const actorId = actor.id
 
-  const heroPointContainer = html.find('section.char-details')
+  const heroPointContainer = $(html).find('section.char-details')
   heroPointContainer.find('div.dots').remove()
 
   const stressValue = StressResourceData.getStressValueForActorOrDefault(actorId)
@@ -97,7 +97,7 @@ function addStressValueToCharacterSheet (actor, html) {
 }
 
 function addStressValueToPartySheet (html) {
-  const memberHeaderContainer = html.find('section.member')
+  const memberHeaderContainer = $(html).find('section.member')
 
   for (const member of memberHeaderContainer) {
     const actorWithId = member.attributes['data-actor-uuid']
@@ -122,7 +122,7 @@ function addStressContextToMessage (message, html) {
     return
   }
 
-  const flavorTextHeader = html.find('header > span.flavor-text')
+  const flavorTextHeader = $(html).find('header > span.flavor-text')
 
   for (const flavorText of flavorTextHeader) {
     const stressIconHtml = `<i class="${module.STRESS_ICON} reroll-indicator" data-tooltip="${module.localize('terms.rerolled-using-stress')}"></i>`
