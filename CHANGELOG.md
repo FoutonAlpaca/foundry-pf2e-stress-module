@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-2026-06-20 - npm package upgrades and maintenance
+### Added
+- Comprehensive documentation: ARCHITECTURE.md, EXTENDING.md, COMPENDIUM.md, MAINTENANCE.md
+- Getting Started section in README.md for players, GMs, and developers
+- Architecture Overview section in README.md with data flow diagram
+
+### Fixed
+- npm package upgrades to latest
 
 ## [1.4.0] - 2025-01-17
 

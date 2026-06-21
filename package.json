@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix"
+  },
   "devDependencies": {
     "eslint-plugin-html": "^8.1.4",
     "standard": "^17.1.2"
