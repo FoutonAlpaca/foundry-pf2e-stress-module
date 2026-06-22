@@ -1,6 +1,8 @@
 import { StressDataFlagApi } from './stress-data-flag-api.js'
 import { StressResourceData } from './actor-stress-resource-data.js'
-import { module } from './module.js'
+import StressModule from './module.js'
+
+const module = StressModule
 
 Hooks.once('init', () => {
   if (game.modules.get('lib-wrapper')?.active) {
@@ -83,7 +85,7 @@ function addStressValueToCharacterSheet (actor, html) {
   <div>
     <label class="pf2e-stress-label"><i class="${module.STRESS_ICON}"></i>
       ${module.localize('terms.stress')}
-      <input id="${inputId}" type="number" class="pf2e-stress" value="${stressValue}" step="1" min="0" max="10">
+      <input id="${inputId}" type="number" class="pf2e-stress" data-testid="stress-input" value="${stressValue}" step="1" min="0" max="10">
     </label>
   </div>`
 
@@ -108,7 +110,7 @@ function addStressValueToPartySheet (html) {
     <div>
       <label><i class="${module.STRESS_ICON}"></i>
         ${module.localize('terms.stress')}
-        <span>${stressValue}</span>
+        <span data-testid="actor-stress">${stressValue}</span>
       </label>
     </div>`
     const header = $(member).find('div.data > header')

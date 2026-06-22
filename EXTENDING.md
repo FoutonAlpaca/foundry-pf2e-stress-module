@@ -227,13 +227,32 @@ npm run lint:fix
 Both the StandardJS linter and VS Code are configured to catch common issues automatically. If `npm run lint` reports errors, fix them before proceeding.
 
 ### Manual Testing
-1. Copy the module to the local foundry folder (run `Copy-ModuleToFoundry.ps1 -Path)
+1. Copy the module to the local foundry folder (run `Copy-ModuleToFoundry.ps1 -Path`)
 1. Open FoundryVTT and load a world with pf2e system
 2. Enable the pf2e-stress module
 3. Open the browser console (F12) and check for errors
 4. Test your feature by interacting with the UI
 5. Check `console.log()` statements to verify behavior
 6. Verify changes persist by reloading the page
+
+### Running Tests
+Run the test suite to verify your changes don't break existing functionality:
+
+```bash
+# Run all tests
+npm test
+
+# Run specific test file
+npm test -- actor-stress-resource-data.spec.js
+
+# Run with verbose output
+npm test -- --verbose
+
+# Run with coverage report
+npm test -- --coverage
+```
+
+Tests are located in the `tests/` directory and use Jest. Always run tests after making changes before committing or completing a task.
 
 ### Debugging
 - Use `console.log()` to trace execution

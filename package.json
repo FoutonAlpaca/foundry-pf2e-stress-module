@@ -1,13 +1,56 @@
 {
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "npx standard",
     "lint:fix": "npx standard --fix"
   },
   "devDependencies": {
-    "eslint-plugin-html": "^8.1.4",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "babel-jest": "^30.4.1",
+    "jest": "^30.4.2",
     "standard": "^17.1.2"
   },
   "standard": {
-    "globals": [ "game", "Hooks", "CONFIG", "$", "libWrapper", "ui", "ChatMessage" ]
-  }
+    "globals": [
+      "game",
+      "Hooks",
+      "CONFIG",
+      "$",
+      "libWrapper",
+      "ui",
+      "ChatMessage",
+      "jest",
+      "describe",
+      "it",
+      "beforeEach",
+      "afterEach",
+      "expect",
+      "test"
+    ]
+  },
+  "name": "pf2e-stress",
+  "version": "1.0.0",
+  "description": "FoundryVTT module for the PF2e system, which replaces hero points for a Stress value. Stress can be used in campaigns where PCs face being ground down by factors over long periods of time.",
+  "main": "scripts/module.js",
+  "exports": {
+    ".": "./scripts/module.js",
+    "./actor-stress-resource-data": "./scripts/actor-stress-resource-data.js",
+    "./stress-data-flag-api": "./scripts/stress-data-flag-api.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoutonAlpaca/foundry-pf2e-stress-module.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/issues"
+  },
+  "homepage": "https://github.com/FoutonAlpaca/foundry-pf2e-stress-module#readme"
 }
