@@ -2,6 +2,8 @@
 export default {
   testEnvironment: 'node',
 
+  testPathIgnorePatterns: ['<rootDir>/tests/e2e/'],
+
   // Use Babel for ES module transformation
   transform: {
     '^.+\\.js$': ['babel-jest']

@@ -1,16 +1,24 @@
 {
   "scripts": {
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix",
+    "test:all": "npm run test && npm run test:e2e",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "npx standard",
-    "lint:fix": "npx standard --fix"
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "test:e2e:debug": "npx playwright test --debug"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
     "@babel/preset-env": "^8.0.2",
+    "@playwright/test": "^1.61.1",
+    "@thefehr/foundry-playwright": "^0.6.1",
+    "@types/node": "^26.0.1",
     "babel-jest": "^30.4.1",
     "jest": "^30.4.2",
+    "playwright": "^1.61.1",
     "standard": "^17.1.2"
   },
   "standard": {
@@ -40,7 +48,6 @@
     "./actor-stress-resource-data": "./scripts/actor-stress-resource-data.js",
     "./stress-data-flag-api": "./scripts/stress-data-flag-api.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FoutonAlpaca/foundry-pf2e-stress-module.git"
