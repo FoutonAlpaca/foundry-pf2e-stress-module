@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-2026-06-20 - npm package upgrades and maintenance
+## [1.5.0] - 2026-06-30
+
+### Added
+- Documentation: ARCHITECTURE.md, EXTENDING.md, COMPENDIUM.md, MAINTENANCE.md
+- Getting Started section in README.md for players, GMs, and developers
+- Architecture Overview section in README.md with data flow diagram
+- Basic unit test coverage using jest
+- Basic e2e test coverage using playwright
+
+### Fixed
+- npm package upgrades to latest
 
 ## [1.4.0] - 2025-01-17
 
@@ -67,7 +77,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Created module with ability to set stress value on a character sheet and show the current value on the party sheet
 
-[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.5.0
 [1.4.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.4.0
 [1.3.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.3.0
 [1.2.0]: https://github.com/FoutonAlpaca/foundry-pf2e-stress-module/releases/tag/1.2.0

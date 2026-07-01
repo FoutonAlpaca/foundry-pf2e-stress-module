@@ -1,4 +1,4 @@
-export class module {
+export class StressModule {
   static MODULE_ID = 'pf2e-stress'
   static MIN_STRESS = 0
   static STRESS_ICON = 'fa-solid fa-brain'
@@ -41,7 +41,7 @@ export class module {
   static getStressMessageLocalizationKey (changeType) {
     const defaultMessageKey = 'charactersheet'
 
-    if (changeType === undefined || changeType === this.STRESS_VALUE_CHANGE_SOURCE.Unspecified) {
+    if (changeType === undefined || changeType === null || changeType === this.STRESS_VALUE_CHANGE_SOURCE.Unspecified) {
       return `messages.${defaultMessageKey}`
     }
 
@@ -49,7 +49,7 @@ export class module {
   }
 
   static localize (term, data = undefined) {
-    const key = `${module.MODULE_ID}.${term}`
+    const key = `${StressModule.MODULE_ID}.${term}`
 
     if (data !== undefined) {
       return game.i18n.format(key, data)
@@ -63,11 +63,11 @@ export class module {
   }
 
   static registerRerollCostConfigurationSettings () {
-    for (const rollCheckType of Object.values(module.DICE_ROLL_CHECK_TYPE)) {
-      const name = module.toRerollSettingKey(rollCheckType)
-      game.settings.register(module.MODULE_ID, name, {
-        name: module.localize(`settings.stress-reroll-cost.${rollCheckType}.name`),
-        hint: module.localize(`settings.stress-reroll-cost.${rollCheckType}.hint`),
+    for (const rollCheckType of Object.values(StressModule.DICE_ROLL_CHECK_TYPE)) {
+      const name = StressModule.toRerollSettingKey(rollCheckType)
+      game.settings.register(StressModule.MODULE_ID, name, {
+        name: StressModule.localize(`settings.stress-reroll-cost.${rollCheckType}.name`),
+        hint: StressModule.localize(`settings.stress-reroll-cost.${rollCheckType}.hint`),
         scope: 'world',
         config: true,
         type: Number,
@@ -81,12 +81,14 @@ export class module {
   }
 
   static getRerollCostForRollCheckType (rollCheckType) {
-    const rollCheckTypes = Object.values(module.DICE_ROLL_CHECK_TYPE)
+    const rollCheckTypes = Object.values(StressModule.DICE_ROLL_CHECK_TYPE)
     if (!rollCheckTypes.includes(rollCheckType)) {
       return 1
     }
 
-    const name = module.toRerollSettingKey(rollCheckType)
-    return game.settings.get(module.MODULE_ID, name)
+    const name = StressModule.toRerollSettingKey(rollCheckType)
+    return game.settings.get(StressModule.MODULE_ID, name)
   }
 }
+
+export default StressModule

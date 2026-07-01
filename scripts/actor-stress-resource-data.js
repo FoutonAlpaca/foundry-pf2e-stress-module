@@ -1,9 +1,9 @@
-import { module } from './module.js'
+import { StressModule } from './module.js'
 import { StressDataFlagApi } from './stress-data-flag-api.js'
 
 export class StressResourceData {
   static sendStressChangeChatMessage (changeType, actorName, oldValue, stressValue) {
-    const localizationKey = module.getStressMessageLocalizationKey(changeType)
+    const localizationKey = StressModule.getStressMessageLocalizationKey(changeType)
     const localizationData = {
       actor: actorName,
       oldValue,
@@ -11,17 +11,17 @@ export class StressResourceData {
     }
 
     const chatData = {
-      content: module.localize(localizationKey, localizationData)
+      content: StressModule.localize(localizationKey, localizationData)
     }
     return ChatMessage.create(chatData)
   }
 
   static getStressDataForActor (actorId) {
-    return StressDataFlagApi.getFlag(module.getActorById(actorId))
+    return StressDataFlagApi.getFlag(StressModule.getActorById(actorId))
   }
 
   static getStressValueForActorOrDefault (actorId) {
-    return this.getStressDataForActor(actorId)?.stress ?? module.MIN_STRESS
+    return this.getStressDataForActor(actorId)?.stress ?? StressModule.MIN_STRESS
   }
 
   static addStressToActor (changeType, actorId, amount = 1) {
@@ -30,15 +30,15 @@ export class StressResourceData {
     return this.setStressValueForActor(changeType, actorId, newStress)
   }
 
-  static setStressValueForActor (changeType = module.STRESS_VALUE_CHANGE_SOURCE.Unspecified, actorId, stressValue) {
+  static setStressValueForActor (changeType = StressModule.STRESS_VALUE_CHANGE_SOURCE.Unspecified, actorId, stressValue) {
     const value = parseInt(stressValue)
     if (isNaN(value)) {
       return
     }
-    if (value < module.MIN_STRESS) {
+    if (value < StressModule.MIN_STRESS) {
       return
     }
-    const actor = module.getActorById(actorId)
+    const actor = StressModule.getActorById(actorId)
     const currentStress = this.getStressValueForActorOrDefault(actorId)
 
     if (currentStress === value) {
@@ -52,6 +52,6 @@ export class StressResourceData {
       stress: value
     }
 
-    return StressDataFlagApi.setFlag(module.getActorById(actorId), stressData)
+    return StressDataFlagApi.setFlag(StressModule.getActorById(actorId), stressData)
   }
 }

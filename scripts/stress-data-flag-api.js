@@ -1,16 +1,16 @@
-import { module } from './module.js'
+import StressModule from './module.js'
 
 export class StressDataFlagApi {
   static getFlag (document) {
-    return document?.getFlag(module.MODULE_ID, module.FLAGS.StressData)
+    return document?.getFlag(StressModule.MODULE_ID, StressModule.FLAGS.StressData)
   }
 
   static setFlag (document, flagData) {
-    return document?.setFlag(module.MODULE_ID, module.FLAGS.StressData, flagData)
+    return document?.setFlag(StressModule.MODULE_ID, StressModule.FLAGS.StressData, flagData)
   }
 
   static getWorkaroundPf2eFlag (document) {
-    return document?.getFlag(module.FLAGS.Pf2e, module.MODULE_ID)?.isRerollFromStress ?? false
+    return document?.getFlag(StressModule.FLAGS.Pf2e, StressModule.MODULE_ID)?.isRerollFromStress ?? false
   }
 
   static setWorkaroundPf2eFlag (document) {
@@ -22,6 +22,6 @@ export class StressDataFlagApi {
       isRerollFromStress: true
     }
 
-    return document?.setFlag(module.FLAGS.Pf2e, module.MODULE_ID, flagData)
+    return document?.setFlag(StressModule.FLAGS.Pf2e, StressModule.MODULE_ID, flagData)
   }
 }

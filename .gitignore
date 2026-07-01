@@ -2,3 +2,7 @@
 node_modules/
 build/package/
 build/release/
+test-results/
+playwright-report/
+.env
+.opencode
